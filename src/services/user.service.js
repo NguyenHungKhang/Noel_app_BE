@@ -23,6 +23,7 @@ const add = async (ipv4) => {
         throw new Error("Người dùng đã tồn tại");
     data.ipv4 = ipv4;
     data.userCode = await codeGenerate();
+    console.log(data);
     const user = new userModel({
         _id: new mongoose.Types.ObjectId(),
         ...data,
