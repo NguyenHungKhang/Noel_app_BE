@@ -32,7 +32,7 @@ export const getOneByUser = async (req, res, next) => {
 
 export const getAll = async (req, res, next) => {
     try {
-        const blogs =  await blogService.getAll(null, req.query.page, 3);
+        const blogs =  await blogService.getAll({createdAt: -1}, req.query.page, 3);
         if(blogs) res.json(blogs);
     } catch (err) {
         next(err);

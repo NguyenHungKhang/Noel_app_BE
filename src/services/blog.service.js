@@ -43,9 +43,9 @@ const getOneByUser = async (userId) => {
     return blog;
 }
 
-const getAll = async (sort = { createdAt: -1 }, page = null, limit = null) => {
+const getAll = async (sort = { "createdAt": 1 }, page = null, limit = null) => {
     const total = await blogModel.find().countDocuments();
-    const blogs = await blogModel.find().sort(sort).skip(page && ((page - 1) * limit)).limit(limit).populate("user").lean().exec();
+    const blogs = await blogModel.find().skip(page && ((page - 1) * limit)).limit(limit).populate("user").sort(sort).lean().exec();
     return {total, blogs};
 }
 
