@@ -2,7 +2,7 @@ import userService from "../services/user.service.js";
 
 export const add = async (req, res, next) => {
     try {
-        const ipv4 = req.params.ipv4;
+        const ipv4 = req.body.ipv4;
         const user = await userService.add(ipv4)
         if (user) res.json(user);
     } catch (err) {
@@ -22,7 +22,7 @@ export const getOne = async (req, res, next) => {
 
 export const getOneByIp = async (req, res, next) => {
     try {
-        const ipv4 = req.body.ipv4;
+        const ipv4 = req.query.ipv4;
         const user = await userService.getOneByIp(ipv4);
         if (user) res.json(user);
     } catch (err) {
